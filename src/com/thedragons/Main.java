@@ -9,7 +9,6 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.jayway.jsonpath.JsonPath;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Properties;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -97,20 +96,8 @@ public class Main {
     }
 
     public void write(String string) {
-        Writer output = null;
-        File file = new File("output.json");
-        try {
-            output = new BufferedWriter(new FileWriter(file));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            assert output != null;
+        try (Writer output = new BufferedWriter(new FileWriter(new File("output.json")))) {
             output.write(string);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
