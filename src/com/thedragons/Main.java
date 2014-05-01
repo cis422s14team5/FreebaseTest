@@ -7,7 +7,8 @@ import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.jayway.jsonpath.JsonPath;
-import java.io.FileInputStream;
+
+import java.io.*;
 import java.util.Properties;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -64,7 +65,8 @@ public class Main {
             HttpRequest request = requestFactory.buildGetRequest(url);
             HttpResponse httpResponse = request.execute();
             JSONObject topic = (JSONObject)parser.parse(httpResponse.parseAsString());
-            System.out.println(JsonPath.read(topic,"$.property['/type/object/name'].values[0].value").toString());
+
+            output(topic);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -91,6 +93,50 @@ public class Main {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void output(JSONObject topic) {
+        String title = JsonPath.read(topic,"$.property['/type/object/name'].values[0].value").toString();
+        String director = "Directed by " +
+                JsonPath.read(topic,"$.property['/film/film/directed_by'].values[0].text").toString();
+        String description =
+                JsonPath.read(topic,"$.property['/common/topic/description'].values[0].value").toString();
+        String rating = "Rated " +
+                JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
+        String wikipedia =
+                JsonPath.read(topic,
+                        "$.property['/common/topic/topic_equivalent_webpage'].values[0].value").toString();
+
+        System.out.println(title);
+        System.out.println("");
+        System.out.println(director);
+        System.out.println("");
+        System.out.println(rating);
+        System.out.println("");
+        System.out.println(description);
+        System.out.println("");
+        System.out.println(wikipedia);
+    }
+
+    public void write(String string) {
+        Writer output = null;
+        File file = new File("output.json");
+        try {
+            output = new BufferedWriter(new FileWriter(file));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            assert output != null;
+            output.write(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
