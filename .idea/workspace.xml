@@ -26,8 +26,8 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/thedragons/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5566406" vertical-offset="390" max-vertical-offset="1860">
-              <caret line="47" column="53" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.00390625" vertical-offset="928" max-vertical-offset="1860">
+              <caret line="64" column="33" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#725#726#0" expanded="true" />
@@ -389,12 +389,12 @@
       <created>1398890266540</created>
       <updated>1398890266540</updated>
       <workItem from="1398919952684" duration="1074000" />
-      <workItem from="1398921092730" duration="4913000" />
+      <workItem from="1398921092730" duration="5047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5987000" />
+    <option name="totallyTimeSpent" value="6121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="116" y="22" width="1215" height="874" extended-state="0" />
@@ -551,8 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thedragons/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5566406" vertical-offset="390" max-vertical-offset="1860">
-          <caret line="47" column="53" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.00390625" vertical-offset="928" max-vertical-offset="1860">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#725#726#0" expanded="true" />

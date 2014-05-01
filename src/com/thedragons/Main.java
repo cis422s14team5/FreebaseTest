@@ -41,9 +41,9 @@ public class Main {
             HttpResponse httpResponse = request.execute();
             JSONObject response = (JSONObject)parser.parse(httpResponse.parseAsString());
             JSONArray results = (JSONArray)response.get("result");
+            JSONObject resultMap = (JSONObject)results.get(0);
 
-            HashMap<String, String> resultMap = (HashMap)results.get(0);
-            topicAPI(resultMap.get("id"));
+            topicAPI(resultMap.get("id").toString());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
