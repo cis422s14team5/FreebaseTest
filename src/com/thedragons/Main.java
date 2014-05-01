@@ -14,6 +14,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+// TODO handle path not found issues on some requests
+// TODO write TV search
+
 
 public class Main {
 
@@ -34,7 +37,8 @@ public class Main {
             HttpRequestFactory requestFactory = httpTransport.createRequestFactory();
             JSONParser parser = new JSONParser();
             GenericUrl url = new GenericUrl("https://www.googleapis.com/freebase/v1/search");
-            url.put("query", "Blade Runner");
+            url.put("query", "blade runner");
+            url.put("filter", "(all type:/film/film)");
             url.put("key", properties.get("API_KEY"));
             HttpRequest request = requestFactory.buildGetRequest(url);
             HttpResponse httpResponse = request.execute();
@@ -75,9 +79,9 @@ public class Main {
                 JsonPath.read(topic,"$.property['/common/topic/description'].values[0].value").toString();
         String rating = "Rated " +
                 JsonPath.read(topic, "$property['/film/film/rating'].values[0].text").toString();
-        String wikipedia =
+        String website =
                 JsonPath.read(topic,
-                        "$.property['/common/topic/topic_equivalent_webpage'].values[0].value").toString();
+                        "$.property['/common/topic/official_website'].values[0].value").toString();
 //        String image =
 //                JsonPath.read(topic,
 //                        "$.property['/common/topic/image']").toString();
@@ -90,7 +94,7 @@ public class Main {
         System.out.println("");
         System.out.println(description);
         System.out.println("");
-        System.out.println(wikipedia);
+        System.out.println(website);
 //        System.out.println("");
 //        System.out.println(image);
     }
