@@ -79,6 +79,9 @@ public class Main {
         String wikipedia =
                 JsonPath.read(topic,
                         "$.property['/common/topic/topic_equivalent_webpage'].values[0].value").toString();
+//        String image =
+//                JsonPath.read(topic,
+//                        "$.property['/common/topic/image']").toString();
 
         System.out.println(title);
         System.out.println("");
@@ -89,6 +92,8 @@ public class Main {
         System.out.println(description);
         System.out.println("");
         System.out.println(wikipedia);
+//        System.out.println("");
+//        System.out.println(image);
     }
 
     public void write(String string) {
