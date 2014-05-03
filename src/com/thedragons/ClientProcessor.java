@@ -35,7 +35,7 @@ public class ClientProcessor {
             outputList.forEach(System.out::println);
 
             System.out.println();
-            System.out.println("Enter a title to search again, film or tv to switch filters, or quit.");
+            System.out.println("Server: Enter a title to search again, film or tv to switch filters, or quit.");
         } else {
             System.out.println("Server: " + input);
         }

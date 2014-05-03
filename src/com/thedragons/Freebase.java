@@ -48,13 +48,13 @@ public class Freebase {
             JSONArray results = (JSONArray) response.get("result");
             JSONObject resultMap = (JSONObject) results.get(0);
 
-            topicAPI(resultMap.get("id").toString());
+            setTopic(resultMap.get("id").toString());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private void topicAPI(String topicId) {
+    public void setTopic(String topicId) {
         try {
             properties.load(new FileInputStream("freebase.properties"));
             HttpTransport httpTransport = new NetHttpTransport();

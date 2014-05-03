@@ -41,7 +41,7 @@ public class ServerProcessor {
             case FILM:
                 if (input.equals("tv")) {
                     state = TV;
-                    output = ("Enter a <film title> to search or \"tv\" to search for TV shows.");
+                    output = ("Enter a <tv show title> to search or \"film\" to search for films.");
                 } else if (!(input.equals("quit") && !input.equals("tv") &&  !input.equals(""))) {
                     freebase.search(input, "film");
                     output = freebase.getTopic().toJSONString();
@@ -53,7 +53,7 @@ public class ServerProcessor {
             case TV:
                 if (input.equals("film")) {
                     state = FILM;
-                    output = ("Enter a <tv show title> to search or \"film\" to search for films.");
+                    output = ("Enter a <film title> to search or \"tv\" to search for TV shows.");
                 } else if (!(input.equals("quit") && !input.equals("film") && !input.equals(""))) {
                     freebase.search(input, "tv");
                     output = freebase.getTopic().toJSONString();
