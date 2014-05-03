@@ -3,7 +3,6 @@ package com.thedragons;
 import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 import java.util.ArrayList;
 
@@ -74,7 +73,6 @@ public class TopicProcessor {
 
     public ArrayList<String> tvOutput(JSONObject topic) {
         ArrayList<String> output = new ArrayList<>();
-        //System.out.println(topic);
         
         String title = JsonPath.read(topic,"$.property['/type/object/name'].values[0].value").toString();
 
@@ -105,8 +103,6 @@ public class TopicProcessor {
                 "$.property['/tv/tv_program/number_of_seasons'].values[0].value").toString()));
         String numEpisodes = JsonPath.read(topic,
                 "$.property['/tv/tv_program/number_of_episodes'].values[0].value").toString();
-//        String numEpisodes = String.format("%s", (int) Float.parseFloat(JsonPath.read(topic,
-//                "$.property['/tv/tv_program/number_of_episodes'].values[0].value").toString()));
 
 //        JSONArray episodes =
 //                JsonPath.read(topic,"$.property['/tv/tv_program/episodes'].values");
