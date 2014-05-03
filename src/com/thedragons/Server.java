@@ -36,37 +36,26 @@ import java.lang.Integer;
 import java.lang.String;
 import java.lang.System;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
 
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {
-            System.err.println("Usage: java FreebaseServer <port number>");
+            System.err.println("Usage: java Server <port number>");
             System.exit(1);
         }
 
         int portNumber = Integer.parseInt(args[0]);
+        boolean listening = true;
 
-        ServerSocket serverSocket = new ServerSocket(portNumber);
-        Socket clientSocket = serverSocket.accept();
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        // Initiate conversation with client
-        ServerProcessor serverProcessor = new ServerProcessor();
-        String output = serverProcessor.processInput("");
-        out.println(output);
-
-        String input;
-        while ((input = in.readLine()) != null) {
-            if (output.equals("Bye.")) {
-                break;
+        try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
+            while (listening) {
+                new ServerThread(serverSocket.accept()).start();
             }
-
-            output = serverProcessor.processInput(input);
-            out.println(output);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port " + portNumber);
+            System.exit(-1);
         }
     }
 
